@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.lab3_moviles.databinding.FragmentGalleryBinding;
+import com.example.lab3_moviles.databinding.FragmentPerfilBinding;
 
 public class PerfilFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentPerfilBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         PerfilViewModel perfilViewModel =
                 new ViewModelProvider(this).get(PerfilViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textGallery;

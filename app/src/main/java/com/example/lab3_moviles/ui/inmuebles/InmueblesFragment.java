@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.lab3_moviles.databinding.FragmentSlideshowBinding;
+import com.example.lab3_moviles.databinding.FragmentInmueblesBinding;
 
 public class InmueblesFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentInmueblesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         InmueblesViewModel inmueblesViewModel =
                 new ViewModelProvider(this).get(InmueblesViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
+        final TextView textView = binding.textInmuebles;
         inmueblesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

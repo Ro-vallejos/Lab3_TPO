@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mv.getMensaje().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_LONG)
-                        .setBackgroundTint(Color.RED)
-                        .setTextColor(Color.WHITE)
-                        .show();
+                Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_LONG).show();
             }
         });
 
