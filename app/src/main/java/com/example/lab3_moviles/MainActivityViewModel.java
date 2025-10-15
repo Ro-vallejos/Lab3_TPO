@@ -23,6 +23,12 @@ public class MainActivityViewModel extends AndroidViewModel {
         return mMensaje;
     }
     public void login(String mail, String clave) {
+
+
+        if(clave.isEmpty()||mail.isEmpty()){
+            mMensaje.setValue("Todos los campos son obligatorios");
+            return;
+        }
         ApiClient.InmoService api = ApiClient.getApiInmobiliaria();
         Call<String> llamada = api.login(mail, clave);
         llamada.enqueue(new Callback<String>() {
