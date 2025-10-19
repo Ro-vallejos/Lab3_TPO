@@ -16,5 +16,9 @@
             android:id="@+id/nav_inmuebles"
             android:icon="@drawable/inmuebles"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="@string/Logout" />
     </group>
 </menu>

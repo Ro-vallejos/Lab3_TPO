@@ -10,4 +10,7 @@
     <string name="menu_inicio">Ubicación</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_slideshow">Inmuebles</string>
+    <string name="CambiarClave">Cambiar Clave</string>
+    <string name="Logout">Cerrar sesión</string>
+
 </resources>

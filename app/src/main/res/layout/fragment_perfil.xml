@@ -7,7 +7,7 @@
     tools:context=".ui.perfil.PerfilFragment">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
@@ -17,11 +17,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvApellido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apellido"
         app:layout_constraintBottom_toTopOf="@+id/etApellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teléfono"
+        app:layout_constraintBottom_toTopOf="@+id/etTelefono"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +39,7 @@
         android:id="@+id/etDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="80dp"
         android:defaultFocusHighlightEnabled="false"
         android:ems="10"
         android:enabled="false"
@@ -113,6 +122,27 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         />
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        android:paddingHorizontal="20dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        />
 
     <Button
         android:id="@+id/btnEditar"
@@ -123,12 +153,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
-        android:backgroundTint="@color/teal_700"
+        app:layout_constraintTop_toBottomOf="@+id/etTelefono"
+        android:backgroundTint="@color/primary_700"
+        android:textColor="#FFFFFF"/>
+    <Button
+        android:id="@+id/btnCambiarClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Cambiar Clave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditar"
+        android:backgroundTint="@color/primary_700"
         android:textColor="#FFFFFF"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvDni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -139,7 +181,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"

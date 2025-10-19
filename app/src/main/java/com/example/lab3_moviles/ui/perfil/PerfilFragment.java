@@ -13,7 +13,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.lab3_moviles.R;
 import com.example.lab3_moviles.databinding.FragmentPerfilBinding;
 import com.example.lab3_moviles.models.Propietario;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,6 +39,8 @@ public class PerfilFragment extends Fragment {
                 binding.etApellido.setText(propietario.getApellido());
                 binding.etDni.setText(propietario.getDni());
                 binding.etEmail.setText(propietario.getEmail());
+                binding.etTelefono.setText(propietario.getTelefono());
+
             }
         });
 
@@ -47,15 +51,18 @@ public class PerfilFragment extends Fragment {
                binding.etDni.setEnabled(aBoolean);
                binding.etNombre.setEnabled(aBoolean);
                binding.etApellido.setEnabled(aBoolean);
+                binding.etTelefono.setEnabled(aBoolean);
 
             }
         });
+
         vm.getTextoBoton().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 binding.btnEditar.setText(s);
             }
         });
+
         binding.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,15 +70,27 @@ public class PerfilFragment extends Fragment {
                String apellido = binding.etApellido.getText().toString();
                String dni = binding.etDni.getText().toString();
                String email = binding.etEmail.getText().toString();
-               vm.guardar(binding.btnEditar.getText().toString(),nombre,dni,apellido,email);
+                String telefono = binding.etTelefono.getText().toString();
+
+               vm.guardar(binding.btnEditar.getText().toString(),nombre,dni,apellido,email,telefono);
             }
         });
+
+        binding.btnCambiarClave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main).navigate(R.id.nav_cambiarClave);
+            }
+        });
+
         vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_SHORT).show();
             }
         });
+
+
         return (binding.getRoot());
     }
 

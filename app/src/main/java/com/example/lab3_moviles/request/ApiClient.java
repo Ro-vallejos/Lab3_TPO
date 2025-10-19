@@ -46,6 +46,12 @@ public class ApiClient {
         SharedPreferences sp= context.getSharedPreferences("token.xml",Context.MODE_PRIVATE);
         return sp.getString("token",null);
     }
+    public static void eliminarToken(Context context){
+        SharedPreferences sp = context.getSharedPreferences("token.xml", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("token");
+        editor.commit();
+    }
     //interface
     public interface InmoService{
         @FormUrlEncoded
@@ -57,5 +63,8 @@ public class ApiClient {
 
         @PUT("api/Propietarios/actualizar")
         Call<Propietario>updatePropietario(@Header("Authorization")String token, @Body Propietario p);
+        @FormUrlEncoded
+        @PUT("api/Propietarios/changePassword")
+        Call<Void> cambiarClave(@Header("Authorization")String token, @Field("currentPassword") String claveActual, @Field("newPassword") String claveNueva);
     }
 }

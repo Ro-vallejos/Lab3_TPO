@@ -39,27 +39,31 @@ public class PerfilViewModel extends AndroidViewModel {
         return mPropietario;
     }
 
-    public void guardar (String textoBoton, String nombre, String dni, String apellido, String email){
+    public void guardar (String textoBoton, String nombre, String dni, String apellido, String email, String telefono){
         if(textoBoton.equals("Editar")){
             mEstado.setValue(true);
             mTextoBoton.setValue("Guardar");
         }else{
-            //validar los campos (que no estén vacíos, que dni sea numero)
-            if(nombre.isEmpty()||apellido.isEmpty()||email.isEmpty()||dni.isEmpty()){
+            if(nombre.isEmpty()||apellido.isEmpty()||email.isEmpty()||dni.isEmpty()||telefono.isEmpty()){
                 mMensaje.setValue("Los campos son obligatorios");
                 return;
             }
             if (!TextUtils.isDigitsOnly(dni)) {
-                mMensaje.setValue("El DNI debe contener solo números");
+                mMensaje.setValue("El campo dni debe contener solo números");
                 return;
             }
-            //crear propietario
+            if (!TextUtils.isDigitsOnly(telefono)) {
+                mMensaje.setValue("El campo teléfono debe contener solo números");
+                return;
+            }
+
             Propietario p = new Propietario();
             p.setIdPropietario(mPropietario.getValue().getIdPropietario());
             p.setNombre(nombre);
             p.setApellido(apellido);
             p.setDni(dni);
             p.setEmail(email);
+            p.setTelefono(telefono);
             p.setClave(null);
 
             String token = ApiClient.leerToken(getApplication());

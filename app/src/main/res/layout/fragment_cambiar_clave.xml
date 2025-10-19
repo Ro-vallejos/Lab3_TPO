@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.perfil.CambiarClaveFragment">
+    <TextView
+        android:id="@+id/tvClaveNueva2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repita la clave"
+        app:layout_constraintBottom_toTopOf="@+id/etClaveNueva2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tvClaveActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clave nueva"
+        app:layout_constraintBottom_toTopOf="@+id/etClaveActual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tvClaveNueva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clave nueva"
+        app:layout_constraintBottom_toTopOf="@+id/etClaveNueva"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etClaveActual"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edittext_background"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Clave actual"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:paddingHorizontal="20dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etClaveNueva"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edittext_background"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Clave nueva"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:paddingHorizontal="20dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClaveActual" />
+
+    <EditText
+        android:id="@+id/etClaveNueva2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edittext_background"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Repita la clave"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:paddingHorizontal="20dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClaveNueva" />
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClaveNueva2"
+        android:backgroundTint="@color/primary_700"
+        android:textColor="#FFFFFF"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
