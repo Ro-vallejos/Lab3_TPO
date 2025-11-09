@@ -64,6 +64,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
             android:hint="Email"
+            android:textColorHint="@color/gray_400"
+            android:textColor="@color/black"
             android:inputType="textPersonName"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,6 +80,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/edittext_background"
             android:hint="Contraseña"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_400"
             android:inputType="textPassword"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +105,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etClave" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agite el telefono para llamar a la inmobiliaria."
+        android:textColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginContainer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

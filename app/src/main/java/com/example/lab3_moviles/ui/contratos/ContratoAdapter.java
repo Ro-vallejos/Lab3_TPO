@@ -51,7 +51,7 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.Contra
                 .error("null")
                 .into(holder.imgInmueble);
         holder.btnDetalles.setOnClickListener(v->{listener.verListener(inmuebleActual);});
-//      
+//
     }
 
     @Override

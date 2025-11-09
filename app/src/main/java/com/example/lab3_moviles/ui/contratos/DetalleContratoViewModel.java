@@ -42,17 +42,12 @@ public class DetalleContratoViewModel extends AndroidViewModel {
         if(inmuebleActual==null)
         {
             mSinContrato.setValue("Error al mostrar el inmueble");
-            Log.d("carajo", "Inmueble actual: " + inmuebleActual.toString());
         }else{
             String token = ApiClient.leerToken(getApplication());
             Call<Contrato> llamada = ApiClient.getApiInmobiliaria().cargarContrato("Bearer "+ token,inmuebleActual.getId());
             llamada.enqueue(new Callback<Contrato>() {
                 @Override
                 public void onResponse(Call<Contrato> call, Response<Contrato> response) {
-                     Contrato con = response.body();
-                    Log.d("carajo", "Respuesta llamada: " + response);
-                    Log.d("carajo", "Respuesta llamada: " + con.toString());
-
                     if(response.isSuccessful()){
                         Contrato contrato = response.body();
                         if(contrato!=null){
@@ -65,8 +60,7 @@ public class DetalleContratoViewModel extends AndroidViewModel {
                             mSinContrato.postValue("El inmueble no tiene contrato vigente.");
                         }
                     }else{
-                        Log.d("carajo", "Fallo al obtener contrato: " + response);
-                        Log.d("carajo", "Fallo al obtener contrato: " + response.body());
+                        mSinContrato.postValue("Error al obtener el inmueble.");
                     }
                 }
 

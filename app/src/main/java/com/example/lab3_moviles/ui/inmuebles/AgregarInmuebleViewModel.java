@@ -37,6 +37,7 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> mMensaje = new MutableLiveData<>();
     private MutableLiveData<Uri> uriMutableLiveData = new MutableLiveData<>();
+
     public AgregarInmuebleViewModel(@NonNull Application application) {
         super(application);
     }
@@ -47,23 +48,20 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
         return mMensaje;
     }
 
-    public void guardarInmueble (String direccion, String precio, String tipo, String uso, String cantAmbientes, String lat, String longi, String sup){
-        double valor, latitud, longitud;
+    public void guardarInmueble (String direccion, String precio, String tipo, String uso, String cantAmbientes, String sup){
+        double valor;
         int ambientes, superficie;
-        boolean disponible;
         try{
-            if(direccion.isEmpty()||tipo.isEmpty()||uso.isEmpty()||cantAmbientes.isEmpty()||sup.isEmpty()||precio.isEmpty()||lat.isEmpty()||longi.isEmpty()){
+            if(direccion.isEmpty()||tipo.isEmpty()||uso.isEmpty()||cantAmbientes.isEmpty()||sup.isEmpty()||precio.isEmpty()){
                 mMensaje.setValue("Todos los campos son obligatorios.");
                 return;
             }
              valor= Double.parseDouble(precio);
              ambientes= Integer.parseInt(cantAmbientes);
              superficie= Integer.parseInt(sup);
-             latitud = Double.parseDouble(lat);
-             longitud = Double.parseDouble(longi);
 
         } catch (NumberFormatException e) {
-            mMensaje.setValue("Debe ingresar valores numéricos en los campos 'Valor', 'Ambientes','Superficie','Latitud', 'Longitud' ");
+            mMensaje.setValue("Debe ingresar valores numéricos en los campos 'Valor', 'Ambientes','Superficie'");
             return;
         }
         if(uriMutableLiveData.getValue()==null){
@@ -73,10 +71,8 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
 
             Inmueble inmueble = new Inmueble();
             inmueble.setDireccion(direccion);
-            inmueble.setEstado(1);
+            inmueble.setEstado(2);//Estado deshabilitado
             inmueble.setAmbientes(ambientes);
-            inmueble.setLatitud(latitud);
-            inmueble.setLongitud(longitud);
             inmueble.setTipo(tipo);
             inmueble.setSuperficie(superficie);
             inmueble.setUso(uso);
@@ -103,13 +99,6 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
                     mMensaje.postValue("Inmueble cargado exitosamente.");
                 }else {
                     mMensaje.postValue("Error al cargar el inmueble.");
-                    try{
-                        Log.d("carajo", "Fallo: " + response.errorBody().string());
-                        Log.d("carajo", "Fallo: " + inmueble.toString());
-
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
                 }
             }
 

@@ -4,6 +4,7 @@ package com.example.lab3_moviles.ui.inquilinos;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;

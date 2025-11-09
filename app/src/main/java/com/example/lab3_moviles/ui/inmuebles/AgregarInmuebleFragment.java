@@ -66,8 +66,6 @@ public class AgregarInmuebleFragment extends Fragment {
                         binding.etTipo.getText().toString(),
                         binding.etUso.getText().toString(),
                         binding.etAmbientes.getText().toString(),
-                        binding.etLatitud.getText().toString(),
-                        binding.etLongitud.getText().toString(),
                         binding.etSuperficie.getText().toString()
                 );
             }

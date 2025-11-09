@@ -39,7 +39,7 @@ public class DetallePagoViewModel extends AndroidViewModel {
     public void cargarPagos(Bundle b){
         Contrato contrato = (Contrato) b.getSerializable("contrato");
         if(contrato == null){
-            mMensaje.setValue("No se encontraron pagos del contrato.");
+            mMensaje.setValue("El contrato no tiene pagos.");
         }else{
             String token = ApiClient.leerToken(getApplication());
             Call<List<Pago>> llamada = ApiClient.getApiInmobiliaria().getPagos("Bearer "+ token, contrato.getId());
@@ -47,7 +47,6 @@ public class DetallePagoViewModel extends AndroidViewModel {
                 @Override
                 public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
                     List<Pago> con = response.body();
-
                     if(response.isSuccessful()){
                         List<Pago> pagos = response.body();
                         if(pagos!=null){
@@ -58,6 +57,9 @@ public class DetallePagoViewModel extends AndroidViewModel {
                             mPago.setValue(pagos);
                         }
                     }else {
+                        if(response.code()==404){
+                            mMensaje.postValue("El contrato no tiene pagos.");
+                        }
                         mMensaje.setValue("Error al obtener pagos.");
                     }
                 }

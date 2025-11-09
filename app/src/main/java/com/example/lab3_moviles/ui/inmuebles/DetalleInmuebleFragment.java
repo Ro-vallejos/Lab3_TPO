@@ -23,6 +23,7 @@ public class DetalleInmuebleFragment extends Fragment {
 
     private DetalleInmuebleViewModel vm;
     private FragmentDetalleInmuebleBinding binding;
+
     public static DetalleInmuebleFragment newInstance() {
         return new DetalleInmuebleFragment();
     }
@@ -38,8 +39,6 @@ public class DetalleInmuebleFragment extends Fragment {
             binding.tvDireccion.setText(inmueble.getDireccion());
             binding.tvAmbientes.setText(inmueble.getAmbientes()+"");
             binding.tvTipo.setText(inmueble.getTipo());
-            binding.tvLatitud.setText(inmueble.getLatitud()+"");
-            binding.tvLongitud.setText(inmueble.getLongitud()+"");
             binding.tvUso.setText(inmueble.getUso());
             binding.tvPrecio.setText(inmueble.getPrecio()+"");
             Glide.with(this)
@@ -47,7 +46,6 @@ public class DetalleInmuebleFragment extends Fragment {
                     .placeholder(R.drawable.inmuebles)
                     .error("null")
                     .into(binding.imgInmueble);
-            binding.switchDisponible.setChecked(inmueble.isDisponible());
         });
         vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -55,16 +53,20 @@ public class DetalleInmuebleFragment extends Fragment {
                 Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_SHORT).show();
             }
         });
+        vm.getSwitchVisibility().observe(getViewLifecycleOwner(),
+                v -> binding.switchDisponible.setVisibility(v));
+        vm.getAlquiladoVisibility().observe(getViewLifecycleOwner(),
+                v -> binding.tvDisponible2.setVisibility(v));
+
         binding.switchDisponible.setOnClickListener(v->{
             vm.actualizarEstado(binding.switchDisponible.isChecked());
         });
-        vm.getEstado().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+        vm.getmSwitch().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                binding.switchDisponible.setEnabled(aBoolean);
+                binding.switchDisponible.setChecked(aBoolean);
             }
         });
-        vm.getEstado();
         vm.obtenerInmueble(getArguments());
 
 

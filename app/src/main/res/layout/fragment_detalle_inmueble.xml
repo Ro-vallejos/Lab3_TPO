@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -46,7 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="0dp"
         android:background="@drawable/bg_top_rounded"
         app:layout_constraintTop_toBottomOf="@id/gd40"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,194 +55,238 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:divider="@android:color/darker_gray"
+            android:dividerPadding="12dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:showDividers="middle">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoCodigo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Código"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Código:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvCodigo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="A-123"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoAmbientes"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ambientes"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Ambientes:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/tvAmbientes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoDireccion"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Dirección"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Dirección:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/tvDireccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Belgrano 218"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoPrecio"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Precio"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Precio:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/tvPrecio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$ 90.000"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="@color/_3cb3e7" />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoTipo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tipo"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Tipo:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/tvTipo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Casa"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/textoUso"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Uso"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
+                    android:layout_marginStart="12dp"
+                    android:text="Uso:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/tvUso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Residencial"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text=""
+                    android:textColor="#333"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="6dp">
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/dato"
+                    app:tint="#3CB3E7" />
+
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Latitud"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/tvLatitud"
+                    android:id="@+id/textoDisponible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-34.60"
-                    android:textColor="#202124"/>
-            </LinearLayout>
+                    android:layout_marginStart="12dp"
+                    android:text="Disponible:"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="6dp">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Longitud"
-                    android:textColor="#5F6368"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/tvLongitud"
+                    android:id="@+id/tvDisponible2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-58.38"
-                    android:textColor="#202124"/>
+                    android:layout_marginStart="12dp"
+                    android:text="ALQUILADO"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+                <Switch
+                    android:id="@+id/switchDisponible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/tvDisponible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Disponible"
-                android:textSize="16sp"
-                android:textColor="#000000"/>
-            <Switch
-                android:id="@+id/switchDisponible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false" />
 
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

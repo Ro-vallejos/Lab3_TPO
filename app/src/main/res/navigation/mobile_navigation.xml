@@ -97,7 +97,7 @@
     <fragment
         android:id="@+id/nav_detalleInquilino"
         android:name="com.example.lab3_moviles.ui.inquilinos.DetalleInquilinoFragment"
-        android:label="fragment_detalle_inquilino"
+        android:label="Detalles del inquilino"
         tools:layout="@layout/fragment_detalle_inquilino" />
     <activity
         android:id="@+id/mainActivity"

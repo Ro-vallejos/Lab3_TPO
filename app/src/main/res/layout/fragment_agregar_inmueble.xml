@@ -49,6 +49,8 @@
                 android:layout_marginTop="16dp"
                 android:background="@null"
                 android:hint="Dirección"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:paddingVertical="8dp"
                 android:textSize="16sp" />
             <View
@@ -63,6 +65,8 @@
                 android:layout_marginTop="12dp"
                 android:background="@null"
                 android:hint="Precio"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:inputType="numberDecimal"
                 android:paddingVertical="8dp"
                 android:textSize="16sp" />
@@ -74,6 +78,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@null"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:hint="Ambientes"
                 android:inputType="number"
                 android:paddingVertical="8dp"
@@ -86,6 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@null"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:hint="Uso (Ej: Residencial)"
                 android:paddingVertical="8dp"
                 android:textSize="16sp" />
@@ -97,33 +105,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@null"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:hint="Tipo (Ej: Casa, Dpto...)"
                 android:paddingVertical="8dp"
                 android:textSize="16sp" />
             <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#D3CCE6"/>
 
-            <EditText
-                android:id="@+id/etLatitud"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@null"
-                android:hint="Latitud"
-                android:inputType="numberDecimal|numberSigned"
-                android:paddingVertical="8dp"
-                android:textSize="16sp" />
             <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#D3CCE6"/>
 
-            <EditText
-                android:id="@+id/etLongitud"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@null"
-                android:hint="Longitud"
-                android:inputType="numberDecimal|numberSigned"
-                android:paddingVertical="8dp"
-                android:textSize="16sp" />
             <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#D3CCE6"/>
 
             <EditText
@@ -132,6 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@null"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_400"
                 android:hint="Superficie"
                 android:inputType="numberDecimal"
                 android:paddingVertical="8dp"

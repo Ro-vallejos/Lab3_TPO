@@ -44,7 +44,7 @@ public class InmueblesViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     mInmueble.postValue(response.body());
                 }else{
-                    mMensaje.setValue("No hay inmuebles disponibles.");
+                    mMensaje.setValue("No hay inmuebles alquilados.");
                 }
             }
 

@@ -34,9 +34,7 @@ public class ApiClient {
 
     //url base
  //   public static final String URLBASE = "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
-    //metodos para guardar y leer token
     public static final String URLBASE = "http://10.0.2.2:5145/";
-
     public static void guardarToken(Context context, String token){
         SharedPreferences sp = context.getSharedPreferences("token.xml", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();

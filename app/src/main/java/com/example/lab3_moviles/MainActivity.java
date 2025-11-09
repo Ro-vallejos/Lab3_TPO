@@ -1,10 +1,12 @@
 package com.example.lab3_moviles;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.graphics.Color;
+import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mv = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
+
         setContentView(binding.getRoot());
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_LONG).show();
             }
         });
-
+        mv.activarLecturas();
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mv.desactivarLecturas();
+    }
+
 }

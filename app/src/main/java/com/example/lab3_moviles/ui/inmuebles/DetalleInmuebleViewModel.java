@@ -20,29 +20,36 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<Inmueble> mInmueble = new MutableLiveData<>();
     private MutableLiveData<String> mMensaje = new MutableLiveData<>();
-    private MutableLiveData<Boolean> mEstado = new MutableLiveData<>();
+    private MutableLiveData<Boolean> mSwitch = new MutableLiveData<>();
+    private final MutableLiveData<Integer> mSwitchVisibility = new MutableLiveData<>();
+    private final MutableLiveData<Integer> mAlquiladoVisibility = new MutableLiveData<>();
 
+    public LiveData<Boolean> getmSwitch(){return mSwitch;}
     public LiveData<Inmueble> getmInmueble() {
         return mInmueble;
     }
     public LiveData<String> getMensaje(){
         return mMensaje;
     }
-    public LiveData<Boolean> getEstado(){
-        return mEstado;
-    }
+
+    public LiveData<Integer> getSwitchVisibility(){ return mSwitchVisibility; }
+    public LiveData<Integer> getAlquiladoVisibility(){ return mAlquiladoVisibility; }
     public DetalleInmuebleViewModel(@NonNull Application application) {
         super(application);
     }
 
     public void obtenerInmueble (Bundle inmuebleBundle){
         Inmueble inmueble = (Inmueble) inmuebleBundle.getSerializable("inmueble");
-        if(inmueble!=null){
+        if (inmueble != null) {
             mInmueble.setValue(inmueble);
-            if(inmueble.getEstado()!=3){
-                mEstado.setValue(true);
-            }else{
-                mEstado.setValue(false);
+            mSwitch.setValue(inmueble.getEstado() == 1);
+
+            if (inmueble.getEstado() == 3) {
+                mSwitchVisibility.setValue(8);
+                mAlquiladoVisibility.setValue(0);
+            } else {
+                mSwitchVisibility.setValue(0);
+                mAlquiladoVisibility.setValue(8);
             }
         }
     }
@@ -50,7 +57,10 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
 
     public void actualizarEstado ( Boolean disponible){
         Inmueble inmueble = new Inmueble();
-        inmueble.setDisponible(disponible);
+        if(disponible)
+            inmueble.setEstado(1);
+        else
+            inmueble.setEstado(2);
         inmueble.setId(mInmueble.getValue().getId());
         String token = ApiClient.leerToken(getApplication());
         Call<Inmueble> llamada = ApiClient.getApiInmobiliaria().updateInmueble("Bearer "+token,inmueble);
@@ -61,9 +71,6 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
                     mMensaje.postValue("Inmueble actualizado con éxito.");
                 }else{
                     mMensaje.postValue("Error al actualizar el inmueble.");
-                    Log.d("carajo", "Fallo: " + response);
-                    Log.d("carajo", "Fallo: " + inmueble.toString());
-
                 }
             }
 
