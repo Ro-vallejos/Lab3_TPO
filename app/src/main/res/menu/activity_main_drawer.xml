@@ -17,6 +17,14 @@
             android:icon="@drawable/inmuebles"
             android:title="@string/menu_slideshow" />
         <item
+            android:id="@+id/nav_contratosInquilino"
+            android:icon="@drawable/duenio"
+            android:title="Inquilinos" />
+        <item
+            android:id="@+id/nav_contrato"
+            android:icon="@drawable/contrato"
+            android:title="Contratos" />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"
             android:title="@string/Logout" />

@@ -34,14 +34,14 @@ public class DetalleInmuebleFragment extends Fragment {
         binding= FragmentDetalleInmuebleBinding.inflate(inflater,container,false);
 
         vm.getmInmueble().observe(getViewLifecycleOwner(), inmueble -> {
-            binding.tvCodigo.setText(inmueble.getIdInmueble() +"");
+            binding.tvCodigo.setText(inmueble.getId() +"");
             binding.tvDireccion.setText(inmueble.getDireccion());
             binding.tvAmbientes.setText(inmueble.getAmbientes()+"");
             binding.tvTipo.setText(inmueble.getTipo());
             binding.tvLatitud.setText(inmueble.getLatitud()+"");
             binding.tvLongitud.setText(inmueble.getLongitud()+"");
             binding.tvUso.setText(inmueble.getUso());
-            binding.tvPrecio.setText(inmueble.getValor()+"");
+            binding.tvPrecio.setText(inmueble.getPrecio()+"");
             Glide.with(this)
                     .load(ApiClient.URLBASE + inmueble.getImagen())
                     .placeholder(R.drawable.inmuebles)
@@ -58,6 +58,13 @@ public class DetalleInmuebleFragment extends Fragment {
         binding.switchDisponible.setOnClickListener(v->{
             vm.actualizarEstado(binding.switchDisponible.isChecked());
         });
+        vm.getEstado().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                binding.switchDisponible.setEnabled(aBoolean);
+            }
+        });
+        vm.getEstado();
         vm.obtenerInmueble(getArguments());
 
 

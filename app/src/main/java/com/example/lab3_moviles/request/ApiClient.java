@@ -3,7 +3,9 @@ package com.example.lab3_moviles.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.lab3_moviles.models.Contrato;
 import com.example.lab3_moviles.models.Inmueble;
+import com.example.lab3_moviles.models.Pago;
 import com.example.lab3_moviles.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,13 +27,16 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public class ApiClient {
 
 
     //url base
-    public static final String URLBASE = "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
+ //   public static final String URLBASE = "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
     //metodos para guardar y leer token
+    public static final String URLBASE = "http://10.0.2.2:5145/";
+
     public static void guardarToken(Context context, String token){
         SharedPreferences sp = context.getSharedPreferences("token.xml", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -81,5 +86,11 @@ public class ApiClient {
         @Multipart
         @POST("api/Inmuebles/cargar")
         Call<Inmueble>cargarInmueble(@Header("Authorization") String token, @Part MultipartBody.Part imagen, @Part("inmueble") RequestBody inmueble);
+        @GET("api/Contratos/inmueble/{id}")
+        Call<Contrato> cargarContrato(@Header("Authorization") String token, @Path("id") int idInmueble);
+        @GET("api/Inmuebles/GetContratoVigente")
+        Call<List<Inmueble>> getInmueblesConContrato(@Header("Authorization") String token);
+        @GET("api/pagos/contrato/{id}")
+        Call<List<Pago>> getPagos(@Header("Authorization") String token, @Path("id") int idContrato);
     }
 }

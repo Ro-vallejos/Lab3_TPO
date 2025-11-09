@@ -51,7 +51,7 @@ public class PerfilFragment extends Fragment {
                binding.etDni.setEnabled(aBoolean);
                binding.etNombre.setEnabled(aBoolean);
                binding.etApellido.setEnabled(aBoolean);
-                binding.etTelefono.setEnabled(aBoolean);
+               binding.etTelefono.setEnabled(aBoolean);
 
             }
         });
@@ -70,7 +70,7 @@ public class PerfilFragment extends Fragment {
                String apellido = binding.etApellido.getText().toString();
                String dni = binding.etDni.getText().toString();
                String email = binding.etEmail.getText().toString();
-                String telefono = binding.etTelefono.getText().toString();
+               String telefono = binding.etTelefono.getText().toString();
 
                vm.guardar(binding.btnEditar.getText().toString(),nombre,dni,apellido,email,telefono);
             }
@@ -82,7 +82,6 @@ public class PerfilFragment extends Fragment {
                 Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main).navigate(R.id.nav_cambiarClave);
             }
         });
-
         vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {

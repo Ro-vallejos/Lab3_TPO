@@ -18,12 +18,16 @@ import retrofit2.Response;
 
 public class CambiarClaveViewModel extends AndroidViewModel {
     private MutableLiveData<String> mMensaje = new MutableLiveData<>();
+    MutableLiveData<Void> mVolver = new MutableLiveData<>();
 
     public CambiarClaveViewModel(@NonNull Application application) {
         super(application);
     }
     public LiveData<String> getMensaje(){
         return mMensaje;
+    }
+    public LiveData<Void> getVolver(){
+        return mVolver;
     }
 
     public void cambiarClave(Editable claveActual, Editable claveNueva, Editable claveNueva2){
@@ -45,29 +49,32 @@ public class CambiarClaveViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
-                    mMensaje.setValue("Clave actualizada");
+                    mMensaje.postValue("Clave actualizada");
+                    mVolver.postValue(null);
                 }else{
-                    String msg="";
+                    String msg="Error al cambiar la contraseña.";
                     try {
                         if (response.errorBody() != null) {
                             String raw = response.errorBody().string();
                             if (raw != null && !raw.trim().isEmpty()) {
                                 raw = raw.trim();
-                                if (raw.equalsIgnoreCase("La contraseña actual es incorrecta.")) {
-                                    msg = "La contraseña actual es incorrecta.";
-                                }else{
-                                    msg = "Error al cambiar la clave";
+                                if (response.code() ==400) {
+                                    msg = raw.replace("\"", "");
+                                    //msg = "La nueva contraseña no puede ser igual a la actual.";
+                                }else if(response.code() == 401){
+                                    msg = raw.replace("\"", "");
+                                    //msg = "La contraseña actual es incorrecta.";
                                 }
                             }
                         }
                     } catch (Exception ignored) {}
-                    mMensaje.setValue(msg);
+                    mMensaje.postValue(msg);
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                mMensaje.setValue("Error en el servidor");
+                mMensaje.postValue("Error en el servidor");
             }
         });
     }

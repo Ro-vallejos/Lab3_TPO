@@ -2,12 +2,12 @@ package com.example.lab3_moviles.ui.inmuebles;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.lab3_moviles.models.Inmueble;
 import com.example.lab3_moviles.request.ApiClient;
@@ -20,11 +20,16 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<Inmueble> mInmueble = new MutableLiveData<>();
     private MutableLiveData<String> mMensaje = new MutableLiveData<>();
+    private MutableLiveData<Boolean> mEstado = new MutableLiveData<>();
+
     public LiveData<Inmueble> getmInmueble() {
         return mInmueble;
     }
     public LiveData<String> getMensaje(){
         return mMensaje;
+    }
+    public LiveData<Boolean> getEstado(){
+        return mEstado;
     }
     public DetalleInmuebleViewModel(@NonNull Application application) {
         super(application);
@@ -34,13 +39,19 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
         Inmueble inmueble = (Inmueble) inmuebleBundle.getSerializable("inmueble");
         if(inmueble!=null){
             mInmueble.setValue(inmueble);
+            if(inmueble.getEstado()!=3){
+                mEstado.setValue(true);
+            }else{
+                mEstado.setValue(false);
+            }
         }
     }
+
 
     public void actualizarEstado ( Boolean disponible){
         Inmueble inmueble = new Inmueble();
         inmueble.setDisponible(disponible);
-        inmueble.setIdInmueble(mInmueble.getValue().getIdInmueble());
+        inmueble.setId(mInmueble.getValue().getId());
         String token = ApiClient.leerToken(getApplication());
         Call<Inmueble> llamada = ApiClient.getApiInmobiliaria().updateInmueble("Bearer "+token,inmueble);
         llamada.enqueue(new Callback<Inmueble>() {
@@ -50,6 +61,9 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
                     mMensaje.postValue("Inmueble actualizado con éxito.");
                 }else{
                     mMensaje.postValue("Error al actualizar el inmueble.");
+                    Log.d("carajo", "Fallo: " + response);
+                    Log.d("carajo", "Fallo: " + inmueble.toString());
+
                 }
             }
 

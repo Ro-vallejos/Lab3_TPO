@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_nav_inmuebles_to_nav_detalleInmueble"
             app:destination="@id/nav_detalleInmueble" />
+        <action
+            android:id="@+id/action_nav_inmuebles_to_nav_agregarInmueble"
+            app:destination="@id/nav_agregarInmueble" />
     </fragment>
     <fragment
         android:id="@+id/nav_detalleInmueble"
@@ -59,4 +62,46 @@
         android:id="@+id/nav_agregarInmueble"
         android:name="com.example.lab3_moviles.ui.inmuebles.AgregarInmuebleFragment"
         android:label="Agregar Inmueble" />
+    <fragment
+        android:id="@+id/nav_contrato"
+        android:name="com.example.lab3_moviles.ui.contratos.ContratoFragment"
+        android:label="Contratos Vigentes"
+        tools:layout="@layout/fragment_contrato" >
+        <action
+            android:id="@+id/action_nav_contrato_to_detalleContratoFragment"
+            app:destination="@id/nav_detalleContrato" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleContrato"
+        android:name="com.example.lab3_moviles.ui.contratos.DetalleContratoFragment"
+        android:label="Detalles del contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_nav_detalleContrato_to_detallePagoFragment"
+            app:destination="@id/nav_detallePago" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detallePago"
+        android:name="com.example.lab3_moviles.ui.contratos.DetallePagoFragment"
+        android:label="Pagos"
+        tools:layout="@layout/fragment_detalle_pago" />
+    <fragment
+        android:id="@+id/nav_contratosInquilino"
+        android:name="com.example.lab3_moviles.ui.inquilinos.ContratoInquilinosFragment"
+        android:label="Inmuebles Alquilados"
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_contratosFragment_to_detalleInquilinoFragment"
+            app:destination="@id/nav_detalleInquilino" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleInquilino"
+        android:name="com.example.lab3_moviles.ui.inquilinos.DetalleInquilinoFragment"
+        android:label="fragment_detalle_inquilino"
+        tools:layout="@layout/fragment_detalle_inquilino" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.lab3_moviles.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

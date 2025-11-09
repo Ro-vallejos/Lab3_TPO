@@ -5,39 +5,26 @@ import static android.app.Activity.RESULT_OK;
 import static androidx.activity.result.ActivityResultCallerKt.registerForActivityResult;
 
 import android.app.Application;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.lab3_moviles.models.Inmueble;
-import com.example.lab3_moviles.models.Propietario;
 import com.example.lab3_moviles.request.ApiClient;
 import com.google.gson.Gson;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectOutputStream;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -86,14 +73,15 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
 
             Inmueble inmueble = new Inmueble();
             inmueble.setDireccion(direccion);
-            inmueble.setDisponible(true);
+            inmueble.setEstado(1);
             inmueble.setAmbientes(ambientes);
             inmueble.setLatitud(latitud);
             inmueble.setLongitud(longitud);
             inmueble.setTipo(tipo);
             inmueble.setSuperficie(superficie);
             inmueble.setUso(uso);
-            inmueble.setValor(valor);
+            inmueble.setPrecio(valor);
+
 
             byte[] imagen = transformarImagen();
             String inmuebleJson = new Gson().toJson(inmueble);
@@ -115,6 +103,13 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
                     mMensaje.postValue("Inmueble cargado exitosamente.");
                 }else {
                     mMensaje.postValue("Error al cargar el inmueble.");
+                    try{
+                        Log.d("carajo", "Fallo: " + response.errorBody().string());
+                        Log.d("carajo", "Fallo: " + inmueble.toString());
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
 

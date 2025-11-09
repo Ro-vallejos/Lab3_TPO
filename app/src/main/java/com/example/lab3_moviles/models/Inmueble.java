@@ -1,33 +1,42 @@
 package com.example.lab3_moviles.models;
 
-import androidx.annotation.NonNull;
+import com.google.gson.Gson;
 
 import java.io.Serializable;
 
 public class Inmueble implements Serializable {
-    private int idInmueble;
+    private int id;
     private String direccion;
     private String tipo;
+    private int estado;
     private String uso;
     private int ambientes;
     private int superficie;
     private double latitud;
     private double longitud;
-    private double valor;
+    private double precio;
     private String imagen;
     private boolean disponible;
     private int idPropietario;
     private Propietario duenio;
 
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     public Inmueble() {
     }
 
-    public Inmueble(int ambientes, String direccion, boolean disponible, Propietario duenio, int idInmueble, int idPropietario, String imagen, double latitud, double longitud, int superficie, String tipo, String uso, double valor) {
+    public Inmueble(int ambientes, String direccion, boolean disponible, Propietario duenio, int id, int idPropietario, String imagen, double latitud, double longitud, int superficie, String tipo, String uso, double precio) {
         this.ambientes = ambientes;
         this.direccion = direccion;
         this.disponible = disponible;
         this.duenio = duenio;
-        this.idInmueble = idInmueble;
+        this.id = id;
         this.idPropietario = idPropietario;
         this.imagen = imagen;
         this.latitud = latitud;
@@ -35,7 +44,7 @@ public class Inmueble implements Serializable {
         this.superficie = superficie;
         this.tipo = tipo;
         this.uso = uso;
-        this.valor = valor;
+        this.precio = precio;
     }
 
     public int getAmbientes() {
@@ -70,12 +79,12 @@ public class Inmueble implements Serializable {
         this.duenio = duenio;
     }
 
-    public int getIdInmueble() {
-        return idInmueble;
+    public int getId() {
+        return id;
     }
 
-    public void setIdInmueble(int idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdPropietario() {
@@ -134,12 +143,16 @@ public class Inmueble implements Serializable {
         this.uso = uso;
     }
 
-    public double getValor() {
-        return valor;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.lab3_moviles.ui.perfil;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +43,13 @@ public class CambiarClaveFragment extends Fragment {
                vm.cambiarClave(binding.etClaveActual.getText(),binding.etClaveNueva.getText(),binding.etClaveNueva2.getText());
             }
         });
+        vm.getVolver().observe(getViewLifecycleOwner(), new Observer<Void>() {
+            @Override
+            public void onChanged(Void unused) {
+                requireActivity().getOnBackPressedDispatcher().onBackPressed();
+            }
+        });
+
         return (binding.getRoot());
     }
 

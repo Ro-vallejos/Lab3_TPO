@@ -11,4 +11,6 @@
     <color name="gray_400">#BDBDBD</color>
     <color name="primary_500">#87B2E4</color>
     <color name="primary_700">#435B80</color>
+    <color name="_87b2e4">#87B2E4</color>
+    <color name="_3cb3e7">#3CB3E7</color>
 </resources>
